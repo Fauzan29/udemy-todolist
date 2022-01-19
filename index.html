@@ -4,54 +4,61 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Todolist</title>
   </head>
   <body>
     <!-- form untuk mengisi list kegiatan sehari-hari  -->
-    <form name="todoForm">
-      <table>
-        <tbody>
-          <tr>
-            <td><label for="todo">Todo : </label></td>
-            <td><input type="text" id="todo" name="todo" /></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><input type="submit" value="Add" /></td>
-          </tr>
-        </tbody>
-      </table>
-    </form>
+    <h1>TO DO LIST APP</h1>
+    <div class="container">
+      <p>Masukan Kegiatanmu</p>
+      <form name="todoForm">
+        <table>
+          <tbody>
+            <tr>
+              <td><label for="todo">Todo : </label></td>
+              <td><input type="text" id="todo" name="todo" /></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><input type="submit" value="Add" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
 
-    <!-- form untuk menampikan list yang telah di input -->
-    <h1>Todolist</h1>
-    <form>
-      <table>
-        <thead>
-          <tr>
-            <th>Filter :</th>
-            <th><input type="text" id="search" name="search" /></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><input type="button" value="Done" /></td>
-            <td>ToDo Description</td>
-          </tr>
-        </tbody>
-      </table>
-    </form>
+      <!-- form untuk menampikan list yang telah di input -->
 
+      <form>
+        <h2>Tampilkan Kegiatanmu</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Filter :</th>
+              <th><input type="text" id="search" name="search" /></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="button" value="Done" /></td>
+              <td>ToDo Description</td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
     <script>
+      // langkah 1
       const todolist = [];
 
+      // langkah 3
       function displayTodoList() {
         for (let i = 0; i < todolist.length; i++) {
           const todo = todolist[i];
         }
       }
 
-      // langkah 1
+      // langkah 2
       document.forms['todoForm'].onsubmit = function (event) {
         event.preventDefault();
         const todo = document.forms['todoForm']['todo'].value;

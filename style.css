@@ -6,6 +6,7 @@ html {
 
 h1 {
   text-align: center;
+  text-shadow: 1px 1px 5px blue;
 }
 .container {
   color: white;
@@ -20,6 +21,15 @@ h1 {
   border: 3px solid rgb(160, 28, 28);
   padding: 30px;
   border-radius: 20px;
+  box-shadow: 0px -1px 10px 5px red;
+}
+
+.container #todo,
+.todo {
+  display: flex;
+  height: 20px;
+  align-items: flex-start;
+  border-radius: 5px;
 }
 
 .container p {
@@ -40,6 +50,7 @@ h1 {
 }
 
 .display {
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   margin-top: 50px;
@@ -50,7 +61,11 @@ h1 {
   max-height: 300px;
 }
 
-.display #search {
+.display #search,
+.search {
   display: flex;
+  height: 20px;
   align-items: flex-start;
+  border-radius: 5px;
+  margin-bottom: 15px;
 }

@@ -50,7 +50,7 @@
     </div>
     <script>
       // langkah 1
-      const todolist = [];
+      const todolist = ['Belajar JavaScript Dasar', 'Belajar JavaScript Object Oriented Programming', 'Belajar JavaScript Document Object Model'];
 
       // langkah 4
       function clearTodoList() {
@@ -60,33 +60,48 @@
         }
       }
 
+      // langkah 7
+      function removeTodoList(index) {
+        todolist.splice(index, 1);
+        displayTodoList();
+      }
+
+      // langkah 6
+      function addTodoList(index, todo) {
+        const tr = document.createElement('tr');
+        // menambahkan kolom button
+        const tdButton = document.createElement('td');
+        tr.appendChild(tdButton);
+        // memunculkan tombol button
+        const buttonDone = document.createElement('input');
+        buttonDone.type = 'button';
+        buttonDone.value = 'Done';
+        tdButton.appendChild(buttonDone);
+        buttonDone.onclick = function () {
+          removeTodoList(index);
+        };
+
+        // menambahkan kolom todo
+        const tdTodo = document.createElement('td');
+        tdTodo.textContent = todo; // memasukan text yang telah di input dari varianle todo
+        tr.appendChild(tdTodo); // menampilkan text todo ke kolom tdTodo
+
+        document.getElementById('todoListBody').style.color = 'yellow';
+
+        const todolistBody = document.getElementById('todoListBody');
+        todolistBody.appendChild(tr);
+      }
+
       // langkah 3
       function displayTodoList() {
         clearTodoList();
 
         for (let i = 0; i < todolist.length; i++) {
           const todo = todolist[i];
-
-          // menambahkan row di display
-          const tr = document.createElement('tr');
-          // menambahkan kolom button
-          const tdButton = document.createElement('td');
-          tr.appendChild(tdButton);
-          // memunculkan tombol button
-          const buttonDone = document.createElement('input');
-          buttonDone.type = 'button';
-          buttonDone.value = 'Done';
-          tdButton.appendChild(buttonDone);
-
-          // menambahkan kolom todo
-          const tdTodo = document.createElement('td');
-          tdTodo.textContent = todo; // memasukan text yang telah di input dari varianle todo
-          tr.appendChild(tdTodo); // menampilkan text todo ke kolom tdTodo
-
-          document.getElementById('todoListBody').style.color = 'yellow';
-
-          const todolistBody = document.getElementById('todoListBody');
-          todolistBody.appendChild(tr);
+          const searchText = document.getElementById('search').value.toLowerCase();
+          if (todo.toLowerCase().includes(searchText)) {
+            addTodoList(i, todo);
+          }
         }
       }
 
@@ -100,6 +115,14 @@
 
         console.info(todolist);
         displayTodoList(); // menampilkan fungsi displayTodoList (perintah ini ditulis setekag membuat function display todoList)
+      };
+
+      const searchInput = document.getElementById('search');
+      searchInput.onkeyup = function () {
+        displayTodoList();
+      };
+      searchInput.onkeydown = function () {
+        displayTodoList();
       };
 
       displayTodoList();

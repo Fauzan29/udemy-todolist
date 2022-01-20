@@ -49,3 +49,8 @@ h1 {
   height: 300px;
   max-height: 300px;
 }
+
+.display #search {
+  display: flex;
+  align-items: flex-start;
+}
